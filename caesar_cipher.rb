@@ -1,5 +1,3 @@
-#takes 2 inputs -> string and numerical key
-
 #Get string from user
 print "Enter phrase: "
 phrase = gets.chomp
@@ -8,21 +6,25 @@ phrase = gets.chomp
 print "Enter key: "
 key = gets.chomp
 
-
-
 def caesar_cipher(string, key)
-    #1. create variables to store string,key values
-    s = string.upcase
+    #create variables to store string,key values
+    s = string
     k = key.to_i
     
-    #2. break string into array of char
+    #break string into array of char
     phrase_array = s.chars
 
-    #check if lower or uppercase
+    phrase_array.map! do |c|
+        if c.ord.between?(65,90)
+            (((c.ord - 65) + k) % 26 + 65)
+        elsif c.ord.between?(97,122)
+            (((c.ord - 97) + k) % 26 + 97)
+        else
+            c.org + k
+        end
+    end
 
-    phrase_array.map! { |c| (((c.ord - 65) + k) % 26 + 65)}
-
-    #5. convert each number back to char
+    #convert each number back to char
     phrase_array.map! { |c| c.chr}
     new_phrase = phrase_array.join("")
 
