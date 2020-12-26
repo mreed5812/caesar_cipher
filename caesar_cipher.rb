@@ -20,7 +20,7 @@ def caesar_cipher(string, key)
         elsif c.ord.between?(97,122)
             (((c.ord - 97) + k) % 26 + 97)
         else
-            c.org + k
+            c.ord + k
         end
     end
 
