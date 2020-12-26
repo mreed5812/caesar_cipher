@@ -18,12 +18,16 @@ def caesar_cipher(string, key)
     #2. break string into array of char
     phrase_array = s.chars
 
-    #3. convert each char to a number and store in new array
-    phrase_array.map! { |c| c.ord + k}
+    #check if lower or uppercase
 
-    puts phrase_array
-    #4. shift each number by key
+    phrase_array.map! { |c| (((c.ord - 65) + k) % 26 + 65)}
+
     #5. convert each number back to char
+    phrase_array.map! { |c| c.chr}
+    new_phrase = phrase_array.join("")
+
+    puts new_phrase
 end
 
 caesar_cipher(phrase, key)
+
